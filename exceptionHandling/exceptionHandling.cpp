@@ -6,7 +6,59 @@ using namespace std;
 char character(char, int);
 
 int main() {
+    try {
+        cout << character('a', 1) << endl;
+    }
+    catch (char invalidCharacterException) {
+        cout << "Error: " << invalidCharacterException << " is not a valid\n"
+             << "character. Please enter a character 'A-Z' or 'a-z'.\n";
+    }
+    catch (int invalidRangeException) {
+        cout << "Error: " << invalidRangeException << " is not a valid"
+             << " offset given the character\nyou entered. Please enter a valid"
+             << " offset.\n";
+    }
 
+    try {
+        cout << character('A', -1) << endl;
+    }
+    catch (char invalidCharacterException) {
+        cout << "Error: " << invalidCharacterException << " is not a valid\n"
+             << "character. Please enter a character 'A-Z' or 'a-z'.\n";
+    }
+    catch (int invalidRangeException) {
+        cout << "Error: " << invalidRangeException << " is not a valid"
+             << " offset given the character\nyou entered. Please enter a valid"
+             << " offset.\n";
+    }
+
+    try {
+        cout << character('Z', -1) << endl;
+    }
+    catch (char invalidCharacterException) {
+        cout << "Error: " << invalidCharacterException << " is not a valid\n"
+            << "character. Please enter a character 'A-Z' or 'a-z'.\n";
+    }
+    catch (int invalidRangeException) {
+        cout << "Error: " << invalidRangeException << " is not a valid"
+            << " offset given the character\nyou entered. Please enter a valid"
+            << " offset.\n";
+    }
+
+    try {
+        cout << character('?', -1) << endl;
+    }
+    catch (char invalidCharacterException) {
+        cout << "Error: " << invalidCharacterException << " is not a valid\n"
+            << "character. Please enter a character 'A-Z' or 'a-z'.\n";
+    }
+    catch (int invalidRangeException) {
+        cout << "Error: " << invalidRangeException << " is not a valid"
+            << " offset given the character\nyou entered. Please enter a valid"
+            << " offset.\n";
+    }
+
+    return 0;
 }
 
 /* character function. The function takes a char argument representing the
