@@ -91,7 +91,10 @@ char character(char start, int offset) {
         char invalidCharacterException = start;
         throw invalidCharacterException;
     }
-    // Check if the user entered a valid offset.
+    // Check if the user entered a valid offset. The else if first checks that
+    // the target is a character. If it is it then checks for uppercase to
+    // lowercase conversion, then lowercase to uppercase conversion. It executes
+    // if any of these evaluate to true.
     else if (!isalpha(start + offset) || 
              (isupper(start) && islower(start + offset)) ||
              (islower(start) && isupper(start + offset))) {
