@@ -4,14 +4,15 @@ using namespace std;
 
 // Function prototypes.
 char character(char, int);
+void invalidCharacterExceptionHandler(char);
 
 int main() {
+    // Test 1. Should print 'a' to terminal.
     try {
         cout << character('a', 1) << endl;
     }
     catch (char invalidCharacterException) {
-        cout << "Error: " << invalidCharacterException << " is not a valid\n"
-             << "character. Please enter a character 'A-Z' or 'a-z'.\n";
+        invalidCharacterExceptionHandler(invalidCharacterException);
     }
     catch (int invalidRangeException) {
         cout << "Error: " << invalidRangeException << " is not a valid"
@@ -19,12 +20,12 @@ int main() {
              << " offset.\n";
     }
 
+    // Test 2. Should throw the invalidRange exception and report an error.
     try {
         cout << character('A', -1) << endl;
     }
     catch (char invalidCharacterException) {
-        cout << "Error: " << invalidCharacterException << " is not a valid\n"
-             << "character. Please enter a character 'A-Z' or 'a-z'.\n";
+        invalidCharacterExceptionHandler(invalidCharacterException);
     }
     catch (int invalidRangeException) {
         cout << "Error: " << invalidRangeException << " is not a valid"
@@ -32,12 +33,12 @@ int main() {
              << " offset.\n";
     }
 
+    // Test 3. Should print 'Y' to the terminal.
     try {
         cout << character('Z', -1) << endl;
     }
     catch (char invalidCharacterException) {
-        cout << "Error: " << invalidCharacterException << " is not a valid\n"
-            << "character. Please enter a character 'A-Z' or 'a-z'.\n";
+        invalidCharacterExceptionHandler(invalidCharacterException);
     }
     catch (int invalidRangeException) {
         cout << "Error: " << invalidRangeException << " is not a valid"
@@ -45,12 +46,12 @@ int main() {
             << " offset.\n";
     }
 
+    // Test 4. Should throw invalidCharacterException and report an error.
     try {
         cout << character('?', -1) << endl;
     }
     catch (char invalidCharacterException) {
-        cout << "Error: " << invalidCharacterException << " is not a valid\n"
-            << "character. Please enter a character 'A-Z' or 'a-z'.\n";
+        invalidCharacterExceptionHandler(invalidCharacterException);
     }
     catch (int invalidRangeException) {
         cout << "Error: " << invalidRangeException << " is not a valid"
@@ -82,3 +83,13 @@ char character(char start, int offset) {
     else
         return start + offset;
 } // End character.
+
+/* invalidCharacterExceptionHandler. This function takes a char as an argument
+ * and prints a message telling the user the character they entered is not a
+ * valid character. This function only runs if the invalidCharacterException is
+ * thrown.
+ */
+void invalidCharacterExceptionHandler(char exceptionChar) {
+    cout << "Error: " << exceptionChar << " is not a valid character. Please"
+         << "enter a character 'A-Z' or 'a-z'.\n";
+}
