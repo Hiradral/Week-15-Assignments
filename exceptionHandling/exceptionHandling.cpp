@@ -52,6 +52,30 @@ int main() {
         invalidCharacterExceptionHandler(invalidRangeException);
     }
 
+    // Test 5. Should throw an invalidRangeException because converion from
+    // uppercase to lowercase should not be possible.
+    try {
+        cout << character('A', 32) << endl;
+    }
+    catch (char invalidCharacterException) {
+        invalidCharacterExceptionHandler(invalidCharacterException);
+    }
+    catch (int invalidRangeException) {
+        invalidRangeExceptionHandler(invalidRangeException);
+    }
+
+    // Test 6. Should throw an invalidRangeException because conversion from
+    // lowercase to uppercase should not be possible.
+    try {
+        cout << character('j', -32) << endl;
+    }
+    catch (char invalidCharacterException) {
+        invalidCharacterExceptionHandler(invalidCharacterException);
+    }
+    catch (int invalidRangeException) {
+        invalidRangeExceptionHandler(invalidRangeException);
+    }
+
     return 0;
 }
 
@@ -68,7 +92,9 @@ char character(char start, int offset) {
         throw invalidCharacterException;
     }
     // Check if the user entered a valid offset.
-    else if (!isalpha(start + offset)) {
+    else if (!isalpha(start + offset) || 
+             (isupper(start) && islower(start + offset)) ||
+             (islower(start) && isupper(start + offset))) {
         int invalidRangeException = offset;
         throw invalidRangeException;
     }
