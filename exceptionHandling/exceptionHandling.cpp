@@ -1,3 +1,6 @@
+// Justin This
+// CIS 1202 501
+// December 2, 2023
 #include <iostream>
 #include <cctype>
 using namespace std;
